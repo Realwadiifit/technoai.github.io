@@ -20,3 +20,6 @@ npm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Local Qoder tooling state — machine-specific, not company work
+qoder-capability/
