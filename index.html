@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechnoAI — AI staff for people who run things</title>
+<meta name="description" content="TechnoAI puts AI employees on real assignments: research, drafts, monitoring and follow-through, with the work product handed over at the end. Published by WadiiFit Corporation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TechnoAI — AI staff for people who run things">
+<meta property="og:description" content="AI employees on real assignments, with a deliverable at the end. A WadiiFit Corporation product.">
+<meta property="og:url" content="https://technoai.vercel.app">
+<meta name="theme-color" content="#14100c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314100c'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23f4efe3' text-anchor='middle'%3ET%3C/text%3E%3Crect x='5' y='25' width='22' height='2.5' fill='%23cf3f21'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TechnoAI",
+  "legalName": "WadiiFit Corporation",
+  "url": "https://technoai.vercel.app",
+  "brand": "TechnoAI",
+  "publishingPrinciples": "Assignments are logged and the work product is handed over to the client at the end of every shift."
+}
+</script>
+<style>
+:root{
+  --paper:#f4efe3;
+  --paper-deep:#e9e2d1;
+  --ink:#14100c;
+  --ink-soft:#4a4238;
+  --ink-faint:#8b8173;
+  --stamp:#cf3f21;
+  --stamp-deep:#9c2c14;
+  --shift:#1f6f4a;
+  --rule:rgba(20,16,12,.18);
+  --rule-strong:rgba(20,16,12,.75);
+  --serif:"Fraunces","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --sans:"Archivo","Helvetica Neue",Helvetica,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gut:clamp(1.15rem,4.5vw,4.5rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:clamp(1rem,1.02rem,.95rem + .2vw,1.08rem);line-height:1.62;
+  font-feature-settings:"liga" 1,"kern" 1;
+  background-image:
+    radial-gradient(120% 90% at 12% -10%,rgba(207,63,33,.07),transparent 60%),
+    radial-gradient(100% 80% at 100% 0%,rgba(20,16,12,.055),transparent 55%);
+}
+/* paper grain */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.42;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+::selection{background:var(--stamp);color:var(--paper)}
+h1,h2,h3{font-family:var(--serif);font-weight:900;letter-spacing:-.015em;line-height:.98;margin:0}
+a{color:inherit}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:.6rem;top:.6rem;z-index:99;background:var(--ink);color:var(--paper);padding:.5rem .8rem;font-family:var(--mono);font-size:.8rem}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:3px double var(--rule-strong);padding:clamp(.6rem,1.4vw,1rem) 0}
+.mast-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.mast-top .mono{color:var(--ink-faint)}
+.brand{display:flex;align-items:center;gap:.7rem;margin:.5rem 0 .35rem}
+.brand-mark{
+  width:clamp(2.6rem,5vw,3.4rem);aspect-ratio:1;background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.1rem);
+  line-height:1;position:relative;
+}
+.brand-mark::after{content:"";position:absolute;left:14%;right:14%;bottom:.3rem;height:2px;background:var(--stamp)}
+.brand h1{font-size:clamp(2.4rem,7.6vw,4.6rem)}
+.brand h1 em{font-style:normal;color:var(--stamp)}
+.tagline{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.05rem,2.4vw,1.4rem);color:var(--ink-soft);margin:.2rem 0 0;max-width:34ch}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(2.4rem,7vw,5.5rem) 0 clamp(2rem,5vw,3.4rem)}
+.hero-grid{display:grid;gap:clamp(1.6rem,4vw,3.2rem);grid-template-columns:1fr}
+@media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:start}}
+.kicker{display:flex;align-items:center;gap:.8rem;color:var(--stamp);margin-bottom:clamp(1rem,2.5vw,1.6rem)}
+.kicker::after{content:"";flex:1;height:1px;background:var(--rule)}
+.hero h2{font-size:clamp(2.05rem,5.6vw,3.75rem);letter-spacing:-.028em;max-width:22ch}
+.lede{font-size:clamp(1.06rem,1.6vw,1.22rem);max-width:52ch;color:var(--ink-soft);margin:1.3rem 0 0}
+.lede strong{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.7rem;align-items:center}
+.btn{
+  display:inline-block;padding:.85rem 1.5rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;
+  text-transform:uppercase;text-decoration:none;border:1.5px solid var(--ink);position:relative;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--stamp)}
+.btn-ghost:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+
+/* job-order card */
+.order{border:1.5px solid var(--rule-strong);background:rgba(255,255,255,.42);position:relative}
+.order-hd{display:flex;justify-content:space-between;align-items:center;padding:.6rem .85rem;border-bottom:1.5px solid var(--rule-strong);background:var(--paper-deep)}
+.order-hd .mono{font-weight:600}
+.order dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem .9rem;margin:0;padding:.95rem .85rem 1.1rem;font-family:var(--mono);font-size:.8rem;line-height:1.4}
+.order dt{color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;font-size:.68rem;align-self:center}
+.order dd{margin:0;font-weight:500}
+.stamp{
+  position:absolute;right:-.55rem;bottom:-.9rem;transform:rotate(-8deg);
+  border:2px solid var(--stamp);color:var(--stamp);padding:.35rem .6rem;background:var(--paper);
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  box-shadow:2px 2px 0 rgba(156,44,20,.18);
+}
+.dot{display:inline-block;width:.48rem;height:.48rem;border-radius:50%;background:var(--shift);margin-right:.45rem;vertical-align:.05rem}
+.dot{animation:beat 2.4s ease-in-out infinite}
+@keyframes beat{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- ticker ---------- */
+.ticker{border-block:1.5px solid var(--rule-strong);background:var(--ink);color:var(--paper);overflow:hidden;padding:.62rem 0}
+.ticker-track{display:flex;width:max-content;gap:2.4rem;animation:slide 46s linear infinite;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
+.ticker-track span{white-space:nowrap}
+.ticker-track b{color:var(--stamp);font-weight:500}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(2.6rem,6.5vw,4.8rem) 0}
+.sec-hd{display:grid;gap:1.4rem;margin-bottom:clamp(1.6rem,4vw,2.6rem)}
+@media (min-width:760px){.sec-hd{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:end}}
+.sec-num{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--stamp);display:block;margin-bottom:.7rem}
+.sec-hd h3{font-size:clamp(1.7rem,4.3vw,2.75rem)}
+.sec-hd p{margin:0;color:var(--ink-soft);max-width:48ch}
+
+/* how */
+.steps{display:grid;gap:0;border-top:1.5px solid var(--rule-strong)}
+.step{padding:clamp(1.2rem,3vw,1.9rem) 0;border-bottom:1.5px solid var(--rule-strong);display:grid;gap:.5rem .9rem;grid-template-columns:auto 1fr;transition:background .2s ease,padding-left .2s ease}
+.step:hover{background:rgba(20,16,12,.035);padding-left:.7rem}
+.step .n{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,5vw,2.9rem);line-height:.8;color:var(--stamp);opacity:.85}
+.step h4{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.5vw,1.5rem);margin:0;letter-spacing:-.01em}
+.step p{margin:.3rem 0 0;color:var(--ink-soft);max-width:60ch;font-size:.98rem}
+@media (min-width:820px){
+  .steps{grid-template-columns:repeat(3,1fr);border-top:0;column-gap:1.6rem}
+  .step{border-bottom:0;border-top:1.5px solid var(--rule-strong);grid-template-columns:1fr}
+  .step:hover{padding-left:0;padding-top:calc(clamp(1.2rem,3vw,1.9rem) + .35rem)}
+}
+
+/* roster */
+.roster{border:1.5px solid var(--rule-strong);background:rgba(255,255,255,.5)}
+.roster-row{display:grid;grid-template-columns:1fr;gap:.15rem .9rem;padding:.95rem 1rem;border-bottom:1px solid var(--rule);position:relative}
+.roster-row:last-child{border-bottom:0}
+.roster-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--stamp);transition:width .18s ease}
+.roster-row:hover::before{width:4px}
+.roster-row:hover{background:rgba(207,63,33,.045)}
+.r-name{font-family:var(--serif);font-weight:600;font-size:1.12rem;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.r-role{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.r-role.opening{color:var(--stamp)}
+.r-what{color:var(--ink-soft);font-size:.95rem;grid-column:1/-1}
+.r-log{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);grid-column:1/-1;margin-top:.3rem}
+@media (min-width:720px){
+  .roster-row{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) auto;align-items:baseline}
+  .r-what{grid-column:2}.r-log{grid-column:3;text-align:right;margin-top:0}
+}
+.roster-hd{display:none;background:var(--paper-deep);border-bottom:1.5px solid var(--rule-strong);padding:.5rem 1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) auto}
+@media (min-width:720px){.roster-hd{display:grid}}
+
+/* worked example */
+.proof{display:grid;gap:clamp(1.4rem,4vw,2.6rem)}
+@media (min-width:880px){.proof{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}}
+.receipt{border:1.5px solid var(--rule-strong);padding:clamp(1.1rem,3vw,1.7rem);background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.receipt::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0 1.55rem,rgba(244,239,227,.055) 1.55rem 1.7rem)}
+.receipt > *{position:relative}
+.receipt .mono{color:var(--paper-deep)}
+.receipt h4{font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,3.6vw,2.1rem);margin:.5rem 0 1rem;letter-spacing:-.02em}
+.receipt ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.82rem}
+.receipt li{display:flex;gap:.8rem;padding:.5rem 0;border-top:1px solid rgba(244,239,227,.18)}
+.receipt li span:first-child{color:var(--paper-deep);min-width:7.6rem;flex-shrink:0;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding-top:.15rem}
+.receipt .verdict{margin-top:1.1rem;padding-top:1rem;border-top:1.5px solid var(--stamp);font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--paper-deep)}
+.prose p{margin:0 0 1.05em;max-width:56ch;color:var(--ink-soft)}
+.prose p:first-of-type::first-letter{
+  font-family:var(--serif);font-weight:900;float:left;font-size:3.35rem;line-height:.82;
+  padding:.06em .12em 0 0;color:var(--stamp);
+}
+.prose strong{color:var(--ink)}
+
+/* terms */
+.terms{border-top:3px double var(--rule-strong);display:grid;gap:1.4rem;padding-top:clamp(1.6rem,4vw,2.4rem)}
+@media (min-width:700px){.terms{grid-template-columns:repeat(3,1fr);column-gap:2rem}}
+.term h5{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp);margin:0 0 .5rem}
+.term p{margin:0;font-size:.94rem;color:var(--ink-soft)}
+.term .no{text-decoration:line-through;text-decoration-color:var(--stamp);color:var(--ink-faint)}
+
+/* footer */
+footer{background:var(--ink);color:var(--paper-deep);padding:clamp(2.2rem,5vw,3.4rem) 0 clamp(1.4rem,3vw,2rem);margin-top:clamp(1.5rem,4vw,3rem)}
+.foot-grid{display:grid;gap:1.8rem}
+@media (min-width:760px){.foot-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;align-items:end}}
+footer .word{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,5vw,2.7rem);color:var(--paper);letter-spacing:-.02em;line-height:1}
+footer .word em{font-style:normal;color:var(--stamp)}
+footer p{margin:.6rem 0 0;max-width:38ch;font-size:.92rem}
+.legal{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;line-height:2;text-transform:uppercase;color:var(--ink-faint)}
+.legal a{color:var(--paper-deep)}
+.rule-plate{border:1.5px solid var(--stamp);color:var(--stamp);padding:.55rem .8rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2.5deg)}
+.foot-bottom{margin-top:clamp(1.6rem,4vw,2.4rem);padding-top:1rem;border-top:1px solid rgba(244,239,227,.18);display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:space-between}
+.foot-bottom .mono{color:var(--ink-faint);font-size:.66rem}
+
+/* load choreography */
+.rise{opacity:0;transform:translateY(1.15rem);animation:rise .8s cubic-bezier(.2,.7,.25,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+  .ticker-track{width:auto;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-top">
+      <span class="mono">TechnoAI — Establishment</span>
+      <span class="mono">Est. 2026 · Job order No.<span id="ticket">0001</span></span>
+    </div>
+    <div class="brand rise">
+      <div class="brand-mark" aria-hidden="true">T</div>
+      <h1>echno<em>AI</em></h1>
+    </div>
+    <p class="tagline rise" style="animation-delay:.1s">AI staff for people who run things.</p>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker mono rise" style="animation-delay:.16s">Assignment desk · open</div>
+      <h2 class="rise" style="animation-delay:.22s">Hire the work out, not the hours.</h2>
+      <p class="lede rise" style="animation-delay:.28s">
+        TechnoAI puts AI employees on <strong>real assignments</strong> — the research nobody had time for,
+        the drafts that kept slipping, the watch someone has to keep. Each one starts with an instruction,
+        works a shift, and is <strong>signed off with the file in your hands</strong>. No seat licenses.
+        No meetings about the meeting.
+      </p>
+      <div class="cta rise" style="animation-delay:.34s">
+        <a class="btn btn-primary" href="mailto:wadiifit@gmail.com">Send an assignment</a>
+        <a class="btn btn-ghost" href="#roster">See the roster</a>
+      </div>
+    </div>
+
+    <aside class="order rise" style="animation-delay:.4s" aria-label="Sample job order">
+      <div class="order-hd">
+        <span class="mono">Job order</span>
+        <span class="mono" style="color:var(--stamp)">On shift</span>
+      </div>
+      <dl>
+        <dt>Employee</dt><dd><span class="dot" aria-hidden="true"></span>Ava — Research analyst</dd>
+        <dt>Assigned</dt><dd>Map the AI coding-agent market, cite every claim</dd>
+        <dt>Shift</dt><dd>35 minutes, unattended</dd>
+        <dt>Sources</dt><dd>~100 fetched and verified</dd>
+        <dt>Deliverable</dt><dd>52 KB report, delivered as a file</dd>
+        <dt>Billing</dt><dd>Per assignment. Not per hour.</dd>
+      </dl>
+      <span class="stamp">WadiiFit Corp · Received</span>
+    </aside>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Market research <b>·</b></span><span>Competitive teardowns <b>·</b></span>
+    <span>Drafts &amp; revisions <b>·</b></span><span>Document pipelines <b>·</b></span>
+    <span>Monitoring &amp; alerts <b>·</b></span><span>Data cleaning <b>·</b></span>
+    <span>Site build &amp; publish <b>·</b></span><span>Desktop app packaging <b>·</b></span>
+    <span>Market research <b>·</b></span><span>Competitive teardowns <b>·</b></span>
+    <span>Drafts &amp; revisions <b>·</b></span><span>Document pipelines <b>·</b></span>
+    <span>Monitoring &amp; alerts <b>·</b></span><span>Data cleaning <b>·</b></span>
+    <span>Site build &amp; publish <b>·</b></span><span>Desktop app packaging <b>·</b></span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-num">01 — Method</span>
+        <h3>Three things happen on every shift.</h3>
+      </div>
+      <p>An assignment is a contract with a finish line. That is the whole discipline — and it is why the output arrives instead of stalling.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">1</div>
+        <div>
+          <h4>You write the instruction</h4>
+          <p>Plain language, with the outcome and the acceptance bar. "Know the market well enough to price it" counts. Vague gets clarified before work starts, not after.</p>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">2</div>
+        <div>
+          <h4>The employee works it</h4>
+          <p>Unattended, in parallel, against real tools and real sources. Claims are checked against each other; weak evidence gets dropped rather than decorated.</p>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">3</div>
+        <div>
+          <h4>Work product is signed off</h4>
+          <p>You receive the file, the diff, or the live link — plus what was verified and what was not. Nothing is called done on a promise.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="roster">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-num">02 — Roster</span>
+        <h3>Who is on the desk.</h3>
+      </div>
+      <p>Positions, not personas. Each has a standing brief and a track record line you can audit on request.</p>
+    </div>
+
+    <div class="roster">
+      <div class="roster-hd" aria-hidden="true"><span>Employee &amp; role</span><span>Standing brief</span><span>Last shift</span></div>
+
+      <div class="roster-row">
+        <div class="r-name"><span class="dot" aria-hidden="true"></span>Ava <span class="r-role">Research analyst</span></div>
+        <div class="r-what">Market and competitor research with citation-backed findings; discards any claim it cannot source twice.</div>
+        <div class="r-log">35 min · ~100 sources · 52 KB filed</div>
+      </div>
+
+      <div class="roster-row">
+        <div class="r-name">Bruno <span class="r-role opening">Build engineer · opening</span></div>
+        <div class="r-what">Ships sites and desktop app packages end-to-end — scaffold, build, verify the output actually runs, then publish.</div>
+        <div class="r-log">Verification before completion</div>
+      </div>
+
+      <div class="roster-row">
+        <div class="r-name">Nadia <span class="r-role opening">Documents &amp; reporting · opening</span></div>
+        <div class="r-what">Turns raw notes, logs and numbers into the version you can send to a partner, a bank or a store review.</div>
+        <div class="r-log">Format-controlled output</div>
+      </div>
+
+      <div class="roster-row">
+        <div class="r-name">Sentry <span class="r-role opening">Watch &amp; response · opening</span></div>
+        <div class="r-what">Monitors a thing you specify — a price, a listing, an inbox, a build — and only wakes you when it changes.</div>
+        <div class="r-log">Runs on schedule</div>
+      </div>
+
+      <div class="roster-row">
+        <div class="r-name">Hal <span class="r-role opening">Security review · opening</span></div>
+        <div class="r-what">Reads code for reachable flaws rather than rule IDs, and fixes the exploit path instead of muting the warning.</div>
+        <div class="r-log">Proof-of-reachability standard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-num">03 — Evidence</span>
+        <h3>What a shift actually produced.</h3>
+      </div>
+      <p>Not a demo. The first assignment this shop ran was on itself.</p>
+    </div>
+    <div class="proof">
+      <div class="receipt">
+        <span class="mono">Work product receipt</span>
+        <h4>Competitive teardown, AI coding agents</h4>
+        <ul>
+          <li><span>Instruction</span><span>Understand the field well enough to choose a position in it.</span></li>
+          <li><span>Runtime</span><span>35 minutes, unattended</span></li>
+          <li><span>Fetched</span><span>~100 sources</span></li>
+          <li><span>Kept</span><span>Only claims that survived cross-checking</span></li>
+          <li><span>Delivered</span><span>Single markdown report, 52 KB</span></li>
+          <li><span>Owner</span><span>WadiiFit Corporation</span></li>
+        </ul>
+        <p class="verdict">The report changed the plan. That is the only review that matters.</p>
+      </div>
+      <div>
+        <p>Most "AI employee" products sell you a chat window and call the <strong>hours you spend steering it</strong> a workflow. That is the wrong unit. A shift has an <strong>acceptance bar</strong> written before it starts, and the employee is judged on whether the thing arrived — not on how pleasant the exchange felt.</p>
+        <p>So the ledger above records output: sources fetched, claims kept, files filed. Anything unverifiable stays labelled as unverified, including when that makes the report shorter. A company that ships software under its own name cannot afford an assistant that guesses with confidence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-num">04 — Standing terms</span>
+        <h3>House rules.</h3>
+      </div>
+      <p>Written down because a shop with three employees and one owner still needs policy.</p>
+    </div>
+    <div class="terms">
+      <div class="term">
+        <h5>Output is owned by you</h5>
+        <p>Every file, diff and report is handed over as yours. Nothing is held hostage inside a dashboard you must log into to read.</p>
+      </div>
+      <div class="term">
+        <h5>Nothing ships on a guess</h5>
+        <p>Claims need sources; code needs a real build and a real run. If it was not tested, it gets marked <span class="no">assumed</span> rather than passed.</p>
+      </div>
+      <div class="term">
+        <h5>No secrets in the walls</h5>
+        <p>Credentials stay in your machine's own store. Assignments are logged; the log never carries a token, a key, or a password.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="word">Techno<em>AI</em></div>
+        <p>AI staff for people who run things. Send the instruction; receive the work product.</p>
+      </div>
+      <div class="legal">
+        Published by <a href="#">WadiiFit Corporation</a><br>
+        <a href="mailto:wadiifit@gmail.com">wadiifit@gmail.com</a><br>
+        Desktop build in preparation
+      </div>
+      <div class="rule-plate">Publisher<br>WadiiFit Corp</div>
+    </div>
+    <div class="foot-bottom">
+      <span class="mono">© <span id="yr">2026</span> WadiiFit Corporation — all work product assigned to client</span>
+      <span class="mono">Desktop build · Microsoft Store listing in preparation</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
