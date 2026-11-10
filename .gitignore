@@ -1,25 +1,9 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-build/
-.next/
-
-# Secrets — never commit real environment files
+# We intentionally keep secrets out of version control.
 .env
 .env.*
 !.env.example
-
-# Logs
-*.log
-npm-debug.log*
-
-# Editor and OS noise
+node_modules
+coverage
+**/dist
+**/target
 .DS_Store
-Thumbs.db
-.vscode/
-.idea/
-
-# Local Qoder tooling state — machine-specific, not company work
-qoder-capability/
